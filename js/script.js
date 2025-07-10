@@ -33,10 +33,6 @@ function titleClickHandler(event) {
 	/* add class 'active' to the correct article */
 	targetArticle.classList.add('active');
 }
-const links = document.querySelectorAll('.titles a');
-for (let link of links) {
-	link.addEventListener('click', titleClickHandler);
-}
 
 // function to generate title links
 
@@ -67,7 +63,7 @@ function generateTitleLinks() {
 		// console.log(articleTitle);
 		/* create HTML of the link */
 		const linkHTML =
-			'<li> <a href="# ' +
+			'<li> <a href="#' +
 			articleId +
 			'"> <span> ' +
 			articleTitle +
@@ -75,9 +71,14 @@ function generateTitleLinks() {
 
 		/* insert link into titleList */
 		html = html + linkHTML;
-		console.log('aktualny: ', html);
+		// console.log('aktualny: ', html);
 	}
 	titleList.innerHTML = html;
+	const links = document.querySelectorAll('.titles a');
+	console.log(links);
+	for (let link of links) {
+		link.addEventListener('click', titleClickHandler);
+	}
 }
 
 generateTitleLinks();
